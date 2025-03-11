@@ -24,7 +24,7 @@ class TestLoginPage:
         self.login_page.enter_username("uipm.admin_university.000001")
         self.login_page.enter_password("uipm.01000001")
         self.login_page.click_login_button()
-        time.sleep(3)  # Menunggu 5 detik setelah login
+        time.sleep(3)  # Menunggu 3 detik setelah login
         assert self.driver.current_url == "https://uipm.lms.vertical.id/dashboard"
         assert "Halo Administrator Univ1!" == self.dashboard_page.account_name_dashboard_get_text()
         time.sleep(4)
@@ -36,7 +36,17 @@ class TestLoginPage:
         self.login_page.enter_username("uipm.lecturer.02030102")
         self.login_page.enter_password("uipm.0402030102")
         self.login_page.click_login_button()
-        time.sleep(3)  # Menunggu 5 detik setelah login
+        time.sleep(3)  # Menunggu 3 detik setelah login
+        assert self.driver.current_url == "https://uipm.lms.vertical.id/dashboard"
+        time.sleep(4)
+        print(self.driver.current_url)
+
+    def test_successful_login_learner(self):
+        time.sleep(3)
+        self.login_page.enter_username("gilang321")
+        self.login_page.enter_password("Password123")
+        self.login_page.click_login_button()
+        time.sleep(3)  # Menunggu 3 detik setelah login
         assert self.driver.current_url == "https://uipm.lms.vertical.id/dashboard"
         time.sleep(4)
         print(self.driver.current_url)
